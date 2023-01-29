@@ -22,7 +22,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: /src/ActApp/webapp/
+          context: ./src/ActApp/webapp/
           push: true
           tags: |
             ghcr.io/bejibe/myapp:${{ steps.get_version.outputs.VERSION }}
