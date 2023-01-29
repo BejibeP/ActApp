@@ -19,10 +19,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_REGISTRY_TOKEN }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
-          context: ./src/ActApp/webapp/Dockerfile
+          context: /src/ActApp/webapp/
           push: true
           tags: |
             ghcr.io/bejibe/myapp:${{ steps.get_version.outputs.VERSION }}
