@@ -10,10 +10,9 @@ jobs:
   Publish-Unstable:
     runs-on : ubuntu-latest
     steps:
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_SHA}
-        shell: bash
+      - name: Set Version
+          id: get_version
+          run: echo ${GITHUB_SHA} >> VERSION
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
