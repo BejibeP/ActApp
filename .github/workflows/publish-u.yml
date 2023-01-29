@@ -24,5 +24,6 @@ jobs:
         with:
           context: /src/ActApp/webapp/
           push: true
-          tags: ghcr.io/bejibe/myapp:${{ steps.get_version.outputs.version }}
-          tags: ghcr.io/bejibe/myapp:latest
+          tags: |
+          ghcr.io/bejibe/myapp:${{ steps.get_version.outputs.version }}
+          ghcr.io/bejibe/myapp:latest
