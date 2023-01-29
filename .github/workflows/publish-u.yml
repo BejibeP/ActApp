@@ -11,8 +11,10 @@ jobs:
     runs-on : ubuntu-latest
     steps:
       - name: Set Version
+        run: echo "version=$GITHUB_SHA"
         id: get_version
-        run: echo $GITHUB_SHA >> VERSION
+        outputs:
+          version : ${{ steps.set_sha.outputs.version }}
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -24,6 +26,4 @@ jobs:
         with:
           context: /src/ActApp/webapp/
           push: true
-          tags: |
-            ghcr.io/bejibe/myapp:${{ steps.get_version.outputs.VERSION }}
-            ghcr.io/bejibe/myapp:latest
+          tags: ["ghcr.io/bejibe/myapp:${{ env.version }}", "ghcr.io/bejibe/myapp:latest"]
